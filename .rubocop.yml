@@ -1,0 +1,19 @@
+AllCops:
+  DisabledByDefault: true
+  Exclude:
+    - "gems/**/*"
+  NewCops: enable
+
+Bundler:
+  Enabled: true
+
+Gemspec:
+  Enabled: true
+
+Lint:
+  Enabled: true
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

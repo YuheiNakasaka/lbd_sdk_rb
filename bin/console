@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'bundler/setup'
 require 'lbd_sdk'
@@ -11,4 +12,12 @@ require 'lbd_sdk'
 # Pry.start
 
 require 'irb'
+
+def reload!
+  files = $LOADED_FEATURES.select { |feat| feat =~ %r{/lbd_sdk/} }
+  files.each { |file| load file }
+end
+
+ARGV.clear
+
 IRB.start(__FILE__)
