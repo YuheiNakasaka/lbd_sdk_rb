@@ -47,14 +47,22 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}")
     end
 
+    def service_token_holders(contract_id, query_params: {})
+      get("/v1/service-tokens/#{contract_id}/holders", query_params: page_request(query_params))
+    end
+
     def httpclient
       HTTPClient.new
     end
 
     def get(endpoint_path, query_params: {})
       headers = request_headers(endpoint_path: endpoint_path, method: 'GET', query_params: query_params)
-      puts "#{@endpoint + endpoint_path}, #{headers}"
-      httpclient.get(@endpoint + endpoint_path, headers)
+      query_params = RequestParamFlattener.new.flatten(query_params)
+      if query_params.empty?
+        httpclient.get("#{@endpoint}#{endpoint_path}", headers)
+      else
+        httpclient.get("#{@endpoint}#{endpoint_path}?#{query_params}", headers)
+      end
     end
 
     def request_headers(endpoint_path:, method:, query_params: {}, body: {})
@@ -74,6 +82,14 @@ module LbdSdk
           query_params: query_params,
           body: body,
         )
+      }
+    end
+
+    def page_request(options)
+      {
+        limit: options[:limit] || 10,
+        page: options[:page] || 1,
+        orderBy: options[:order_by] || 'desc',
       }
     end
   end
