@@ -1,8 +1,7 @@
-require_relative '../lib/lbd_sdk'
+# frozen_string_literal: true
 
-RSpec.describe LbdSdk::Calculate do
-  it 'return hello' do
-    ins = LbdSdk::Calculate.new
-    expect(ins.hello).to eq "Hello, World!"
+RSpec.describe LbdSdk do
+  it 'has a version' do
+    expect(LbdSdk::VERSION).not_to be nil
   end
 end

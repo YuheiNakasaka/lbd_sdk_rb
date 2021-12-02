@@ -1,11 +1,4 @@
-require "lbd_sdk/version"
+# frozen_string_literal: true
 
-module LbdSdk
-  class Error < StandardError; end
-  
-  class Calculate
-    def hello
-      return "Hello, World!"
-    end
-  end
-end
+require 'lbd_sdk/version'
+require 'lbd_sdk/client'
