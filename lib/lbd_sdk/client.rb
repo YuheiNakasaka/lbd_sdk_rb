@@ -35,6 +35,10 @@ module LbdSdk
       get("/v1/users/#{user_id}")
     end
 
+    def service_detail(service_id)
+      get("/v1/services/#{service_id}")
+    end
+
     def httpclient
       HTTPClient.new
     end
