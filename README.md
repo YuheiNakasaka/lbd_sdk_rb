@@ -43,7 +43,7 @@ client.time()
 - [ ] POST /v1/service-tokens/{contractId}/burn-from
 - [x] GET /v1/service-tokens/{contractId}/holders
 - [x] GET /v1/item-tokens/{contractId}
-- [ ] GET /v1/item-tokens/{contractId}/fungibles
+- [x] GET /v1/item-tokens/{contractId}/fungibles
 - [ ] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [ ] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}/holders
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles
