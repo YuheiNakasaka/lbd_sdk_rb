@@ -36,7 +36,7 @@ client.time()
 ## TODO
 
 - [x] GET /v1/services/{serviceId}
-- [ ] GET /v1/service-tokens/
+- [x] GET /v1/service-tokens/
 - [ ] GET /v1/service-tokens/{contractId}
 - [ ] PUT /v1/service-tokens/{contractId}
 - [ ] POST /v1/service-tokens/{contractId}/mint
