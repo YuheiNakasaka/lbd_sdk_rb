@@ -31,6 +31,10 @@ module LbdSdk
       get('/v1/time')
     end
 
+    def user_detail(user_id)
+      get("/v1/users/#{user_id}")
+    end
+
     def httpclient
       HTTPClient.new
     end
