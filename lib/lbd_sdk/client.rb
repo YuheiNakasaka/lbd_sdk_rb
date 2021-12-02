@@ -43,7 +43,7 @@ module LbdSdk
 
     def request_headers(endpoint_path:, method:, query_params: {}, body: {})
       nonce = rand(10_000_000..99_999_999)
-      timestamp = Time.new.to_i
+      timestamp = (Time.now.utc.to_f * 1000).round
       method = method.to_s.upcase
       {
         'service-api-key': @api_key,
