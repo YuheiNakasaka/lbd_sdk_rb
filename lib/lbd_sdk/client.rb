@@ -51,6 +51,10 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}/holders", query_params: page_request(query_params))
     end
 
+    def item_token(contract_id)
+      get("/v1/item-tokens/#{contract_id}")
+    end
+
     def httpclient
       HTTPClient.new
     end
