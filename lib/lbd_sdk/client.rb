@@ -43,6 +43,10 @@ module LbdSdk
       get('/v1/service-tokens')
     end
 
+    def service_token_detail(contract_id)
+      get("/v1/service-tokens/#{contract_id}")
+    end
+
     def httpclient
       HTTPClient.new
     end
