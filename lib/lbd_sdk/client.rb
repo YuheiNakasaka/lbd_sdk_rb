@@ -243,6 +243,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
 
+    def update_non_fungible_token(contract_id, token_type, payload = {})
+      put("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", payload: fungible_token_create_update_request(payload))
+    end
+
     def non_fungible_token_type_holders(contract_id, token_type, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/holders", query_params: page_request(query_params))
     end
@@ -564,6 +568,20 @@ module LbdSdk
     end
 
     def fungible_token_create_update_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+      }
+      if !options[:name].nil?
+        params[:name] = options[:name]
+      end
+      if !options[:meta].nil?
+        params[:meta] = options[:meta]
+      end
+      params
+    end
+
+    def non_fungible_token_create_update_request(options)
       params = {
         ownerAddress: options[:owner_address],
         ownerSecret: options[:owner_secret],
