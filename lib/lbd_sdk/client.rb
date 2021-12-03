@@ -119,6 +119,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles", query_params: page_request(query_params))
     end
 
+    def non_fungible_token_balances_by_type_of_wallet(wallet_address, contract_id, token_type, query_params: {})
+      get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
