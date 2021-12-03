@@ -199,6 +199,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/icon/#{request_id}/status")
     end
 
+    def memos(tx_hash)
+      get("/v1/memos/#{tx_hash}")
+    end
+
     def httpclient
       HTTPClient.new
     end

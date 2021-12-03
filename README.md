@@ -110,7 +110,7 @@ client.time()
 - [ ] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/transfer
 - [ ] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/batch-transfer
 - [ ] POST /v1/memos
-- [ ] GET /v1/memos/{txHash}
+- [x] GET /v1/memos/{txHash}
 - [x] GET /v1/time
 - [ ] GET /v1/transactions/{txHash}
 
