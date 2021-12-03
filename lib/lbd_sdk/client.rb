@@ -87,6 +87,10 @@ module LbdSdk
       get('/v1/wallets')
     end
 
+    def wallet_detail(wallet_address)
+      get("/v1/wallets/#{wallet_address}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
