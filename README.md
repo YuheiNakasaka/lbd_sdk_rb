@@ -74,7 +74,7 @@ client.time()
 - [x] GET /v1/users/{userId}
 - [x] GET /v1/users/{userId}/transactions
 - [x] GET /v1/users/{userId}/base-coin
-- [ ] GET /v1/users/{userId}/service-tokens
+- [x] GET /v1/users/{userId}/service-tokens
 - [ ] GET /v1/users/{userId}/service-tokens/{contractId}
 - [ ] GET /v1/users/{userId}/item-tokens/{contractId}/fungibles
 - [ ] GET /v1/users/{userId}/item-tokens/{contractId}/fungibles/{tokenType}

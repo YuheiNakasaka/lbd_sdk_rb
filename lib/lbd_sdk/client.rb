@@ -43,6 +43,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/base-coin")
     end
 
+    def service_token_balances_of_user(user_id, query_params: {})
+      get("/v1/users/#{user_id}/service-tokens", query_params: page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
