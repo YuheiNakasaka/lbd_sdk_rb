@@ -90,9 +90,9 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/proxy
 - [ ] POST /v1/users/{userId}/base-coin/request-transfer
 - [ ] POST /v1/users/{userId}/service-tokens/{contractId}/request-transfer
-- [ ] POST /v1/users/{userId}/service-tokens/{contractId}/request-proxy
+- [x] POST /v1/users/{userId}/service-tokens/{contractId}/request-proxy
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/request-proxy
-- [ ] POST /v1/user-requests/{requestSessionToken}/commit
+- [x] POST /v1/user-requests/{requestSessionToken}/commit
 - [ ] POST /v1/users/{userId}/service-tokens/{contractId}/transfer
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/fungibles/{tokenType}/transfer
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/transfer

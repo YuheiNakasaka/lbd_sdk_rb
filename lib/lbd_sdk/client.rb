@@ -75,6 +75,14 @@ module LbdSdk
       get("/v1/user-requests/#{request_session_token}")
     end
 
+    def issue_service_token_proxy_request(user_id, contract_id, request_type, payload = {})
+      post("/v1/users/#{user_id}/service-tokens/#{contract_id}/request-proxy", query_params: {requestType: request_type}, payload: user_proxy_request(payload))
+    end
+
+    def commit_proxy_request(request_session_token)
+      post("/v1/user-requests/#{request_session_token}/commit")
+    end
+
     def service_token_proxy_status_of_user(user_id, contract_id)
       get("/v1/users/#{user_id}/service-tokens/#{contract_id}/proxy")
     end
@@ -233,9 +241,14 @@ module LbdSdk
       end
     end
 
-    def post(endpoint_path, payload: {})
-      headers = request_headers(endpoint_path: endpoint_path, method: 'POST', payload: payload)
-      httpclient.post("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
+    def post(endpoint_path, query_params: {}, payload: {})
+      headers = request_headers(endpoint_path: endpoint_path, method: 'POST', query_params: query_params, payload: payload)
+      query_params = RequestParamFlattener.new.flatten(query_params)
+      if query_params.empty?
+        httpclient.post("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
+      else
+        httpclient.post("#{@endpoint}#{endpoint_path}?#{query_params}", payload.to_json, headers)
+      end
     end
 
     def put(endpoint_path, payload: {})
@@ -330,6 +343,13 @@ module LbdSdk
         params[:fromAddress] = options[:from_address]
       end
       params
+    end
+
+    def user_proxy_request(options)
+      {
+        ownerAddress: options[:owner_address],
+        landingUri: options[:landing_uri],
+      }
     end
   end
 end
