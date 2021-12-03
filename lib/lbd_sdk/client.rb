@@ -139,6 +139,10 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}")
     end
 
+    def update_service_token(contract_id, payload = {})
+      put("/v1/service-tokens/#{contract_id}", payload: update_service_token_request(payload))
+    end
+
     def service_token_holders(contract_id, query_params = {})
       get("/v1/service-tokens/#{contract_id}/holders", query_params: page_request(query_params))
     end
@@ -221,12 +225,18 @@ module LbdSdk
       end
     end
 
-    def request_headers(endpoint_path:, method:, query_params: {}, body: {})
+    def put(endpoint_path, payload: {})
+      headers = request_headers(endpoint_path: endpoint_path, method: 'PUT', payload: payload)
+      httpclient.put("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
+    end
+
+    def request_headers(endpoint_path:, method:, query_params: {}, payload: {})
       nonce = rand(10_000_000..99_999_999)
       timestamp = (Time.now.utc.to_f * 1000).round
       method = method.to_s.upcase
       {
         'service-api-key': @api_key,
+        'Content-Type': 'application/json',
         Nonce: "#{nonce}",
         Timestamp: "#{timestamp}",
         Signature: SignatureGenerator.new.generate(
@@ -236,8 +246,8 @@ module LbdSdk
           timestamp: timestamp,
           nonce: nonce,
           query_params: query_params,
-          body: body,
-        )
+          body: payload,
+        ),
       }
     end
 
@@ -263,6 +273,20 @@ module LbdSdk
       end
       if !options[:msgType].nil?
         params[:msgType] = options[:msgType]
+      end
+      params
+    end
+
+    def update_service_token_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+      }
+      if !options[:name].nil?
+        params[:name] = options[:name]
+      end
+      if !options[:meta].nil?
+        params[:meta] = options[:meta]
       end
       params
     end
