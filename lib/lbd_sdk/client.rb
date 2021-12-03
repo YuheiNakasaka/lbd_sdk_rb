@@ -268,6 +268,10 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/non-fungibles/multi-recipients/multi-mint", payload: non_fungible_token_multi_mint_multi_recipients_request(payload))
     end
 
+    def burn_non_fungible_token(contract_id, token_type, token_index, payload = {})
+      post("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/burn", payload: non_fungible_token_burn_request(payload))
+    end
+
     def non_fungible_token(contract_id, token_type, token_index)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
@@ -778,6 +782,19 @@ module LbdSdk
         end
       end
 
+      params
+    end
+
+    def non_fungible_token_burn_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+      }
+      if !options[:from_user_id].nil?
+        params[:fromUserId] = options[:from_user_id]
+      elsif !options[:from_address].nil?
+        params[:fromAddress] = options[:from_address]
+      end
       params
     end
 

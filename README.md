@@ -74,7 +74,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/mint
 - [x] POST /v1/item-tokens/{contractId}/non-fungibles/multi-mint
 - [x] POST /v1/item-tokens/{contractId}/non-fungibles/multi-recipients/multi-mint
-- [ ] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/burn
+- [x] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/burn
 - [x] GET /v1/users/{userId}
 - [x] GET /v1/users/{userId}/transactions
 - [x] GET /v1/users/{userId}/base-coin
