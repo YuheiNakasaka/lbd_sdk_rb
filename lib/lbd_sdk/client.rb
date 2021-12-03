@@ -59,6 +59,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
     end
 
+    def fungible_token(contract_id, token_type)
+      get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}")
+    end
+
     def httpclient
       HTTPClient.new
     end
