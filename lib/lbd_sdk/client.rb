@@ -167,6 +167,10 @@ module LbdSdk
       post("/v1/wallets/#{wallet_address}/base-coin/transfer", payload: transfer_base_coin_request(payload))
     end
 
+    def transfer_service_token_of_wallet(wallet_address, contract_id, payload = {})
+      post("/v1/wallets/#{wallet_address}/service-tokens/#{contract_id}/transfer", payload: transfer_service_token_request(payload))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
@@ -467,6 +471,19 @@ module LbdSdk
     end
 
     def transfer_base_coin_request(options)
+      params = {
+        walletSecret: options[:wallet_secret],
+        amount: options[:amount].to_s,
+      }
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
+      end
+      params
+    end
+
+    def transfer_service_token_request(options)
       params = {
         walletSecret: options[:wallet_secret],
         amount: options[:amount].to_s,
