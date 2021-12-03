@@ -223,6 +223,10 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/fungibles", payload: fungible_token_create_update_request(payload))
     end
 
+    def mint_fungible_token(contract_id, token_type, payload = {})
+      post("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}/mint", payload: fungible_token_mint_request(payload))
+    end
+
     def fungible_token(contract_id, token_type)
       get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}")
     end
@@ -643,6 +647,20 @@ module LbdSdk
         params[:tokenHolderUserId] = options[:token_holder_user_id]
       else
         raise ArgumentError, 'token_holder_address or token_holder_user_id, one of them is required'
+      end
+      params
+    end
+
+    def fungible_token_mint_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        amount: options[:amount].to_s,
+      }
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
       end
       params
     end
