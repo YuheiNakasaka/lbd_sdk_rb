@@ -81,7 +81,7 @@ client.time()
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
-- [ ] GET /v1/user-requests/{requestSessionToken}
+- [x] GET /v1/user-requests/{requestSessionToken}
 - [ ] GET /v1/users/{userId}/service-tokens/{contractId}/proxy
 - [ ] GET /v1/users/{userId}/item-tokens/{contractId}/proxy
 - [ ] POST /v1/users/{userId}/base-coin/request-transfer

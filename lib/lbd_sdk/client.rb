@@ -71,6 +71,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles/#{token_type}/#{token_index}")
     end
 
+    def retrieve_session_token_status(request_session_token)
+      get("/v1/user-requests/#{request_session_token}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
