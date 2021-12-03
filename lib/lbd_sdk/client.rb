@@ -47,6 +47,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/service-tokens", query_params: page_request(query_params))
     end
 
+    def service_token_balance_of_user(user_id, contract_id)
+      get("/v1/users/#{user_id}/service-tokens/#{contract_id}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
