@@ -255,6 +255,10 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/non-fungibles", payload: non_fungible_token_create_update_request(payload))
     end
 
+    def mint_non_fungible_token(contract_id, token_type, payload = {})
+      post("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/mint", payload: non_fungible_token_mint_request(payload))
+    end
+
     def non_fungible_token(contract_id, token_type, token_index)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
@@ -683,6 +687,25 @@ module LbdSdk
         params[:fromUserId] = options[:from_user_id]
       elsif !options[:from_address].nil?
         params[:fromAddress] = options[:from_address]
+      end
+      params
+    end
+
+    def non_fungible_token_mint_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        name: options[:name],
+      }
+
+      if !options[:meta].nil?
+        params[:meta] = options[:meta]
+      end
+
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
       end
       params
     end
