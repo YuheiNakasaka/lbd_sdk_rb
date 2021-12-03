@@ -45,9 +45,12 @@ module LbdSdk
       http(uri).put(uri.request_uri, payload, header)
     end
 
-    def delete(url, header = {})
+    def delete(url, payload = {}, header = {})
       uri = URI(url)
-      http(uri).delete(uri.request_uri, header)
+      http = http(uri)
+      request = Net::HTTP::Delete.new(uri.request_uri, header)
+      request.body = payload
+      http.request(request)
     end
   end
 end

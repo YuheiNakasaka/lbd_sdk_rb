@@ -263,6 +263,10 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/parent", payload: non_fungible_token_attach_request(payload))
     end
 
+    def detach_non_fungible_token(contract_id, token_type, token_index, payload = {})
+      delete("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/parent", payload: non_fungible_token_detach_request(payload))
+    end
+
     def children_of_non_fungible_token(contract_id, token_type, token_index, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/children", query_params: page_request(query_params))
     end
@@ -322,6 +326,11 @@ module LbdSdk
     def put(endpoint_path, payload: {})
       headers = request_headers(endpoint_path: endpoint_path, method: 'PUT', payload: payload)
       httpclient.put("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
+    end
+
+    def delete(endpoint_path, payload: {})
+      headers = request_headers(endpoint_path: endpoint_path, method: 'DELETE', payload: payload)
+      httpclient.delete("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
     end
 
     def request_headers(endpoint_path:, method:, query_params: {}, payload: {})
@@ -614,7 +623,22 @@ module LbdSdk
       elsif !options[:token_holder_user_id].nil?
         params[:tokenHolderUserId] = options[:token_holder_user_id]
       else
-        raise ArgumentError, 'token_holder_address or token_holder_user_idm, one of them is required'
+        raise ArgumentError, 'token_holder_address or token_holder_user_id, one of them is required'
+      end
+      params
+    end
+
+    def non_fungible_token_detach_request(options)
+      params = {
+        serviceWalletAddress: options[:service_wallet_address],
+        serviceWalletSecret: options[:service_wallet_secret],
+      }
+      if !options[:token_holder_address].nil?
+        params[:tokenHolderAddress] = options[:token_holder_address]
+      elsif !options[:token_holder_user_id].nil?
+        params[:tokenHolderUserId] = options[:token_holder_user_id]
+      else
+        raise ArgumentError, 'token_holder_address or token_holder_user_id, one of them is required'
       end
       params
     end
