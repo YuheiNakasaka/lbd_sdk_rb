@@ -35,6 +35,10 @@ module LbdSdk
       get("/v1/users/#{user_id}")
     end
 
+    def user_transactions(user_id, query_params: {})
+      get("/v1/users/#{user_id}/transactions", query_params: transaction_page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
@@ -147,6 +151,24 @@ module LbdSdk
         page: options[:page] || 1,
         orderBy: options[:order_by] || 'desc',
       }
+    end
+
+    def transaction_page_request(options)
+      params = {
+        limit: options[:limit] || 10,
+        page: options[:page] || 1,
+        orderBy: options[:order_by] || 'desc',
+      }
+      if !options[:before].nil?
+        params[:before] = options[:before]
+      end
+      if !options[:after].nil?
+        params[:after] = options[:after]
+      end
+      if !options[:msgType].nil?
+        params[:msgType] = options[:msgType]
+      end
+      params
     end
   end
 end
