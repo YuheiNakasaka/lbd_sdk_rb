@@ -318,10 +318,14 @@ module LbdSdk
 
     def update_fungible_token_media_resources(contract_id, token_types)
       put("/v1/item-tokens/#{contract_id}/fungibles/icon", payload: fungible_token_media_resources_request(token_types))
-    end 
+    end
 
     def non_fungible_token_media_resources_update_status(contract_id, request_id)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/icon/#{request_id}/status")
+    end
+
+    def update_non_fungible_token_media_resources(contract_id, token_ids)
+      put("/v1/item-tokens/#{contract_id}/non-fungibles/icon", payload: non_fungible_token_media_resources_request(token_ids))
     end
 
     def memos(tx_hash)
@@ -533,9 +537,9 @@ module LbdSdk
 
       if !options[:transfer_list].nil? &&
           options[:transfer_list].is_a?(Array) && !options[:transfer_list].empty?
-        params[:transferList] = options[:transfer_list].map do |obj|
+        params[:transferList] = options[:transfer_list].map do |option|
           {
-            tokenId: obj[:token_id] || obj[:tokenId],
+            tokenId: option[:token_id] || option[:tokenId],
           }
         end
       end
@@ -606,9 +610,9 @@ module LbdSdk
 
       if !options[:transfer_list].nil? &&
           options[:transfer_list].is_a?(Array) && !options[:transfer_list].empty?
-        params[:transferList] = options[:transfer_list].map do |obj|
+        params[:transferList] = options[:transfer_list].map do |option|
           {
-            tokenId: obj[:token_id] || obj[:tokenId],
+            tokenId: option[:token_id] || option[:tokenId],
           }
         end
       end
@@ -809,9 +813,27 @@ module LbdSdk
 
       if !options[:update_list].nil? &&
           options[:update_list].is_a?(Array) && !options[:update_list].empty?
-        params[:updateList] = options[:update_list].map do |obj|
+        params[:updateList] = options[:update_list].map do |option|
           {
-            tokenType: obj[:token_type] || obj[:tokenType],
+            tokenType: option[:token_type] || option[:tokenType],
+          }
+        end
+      end
+
+      params
+    end
+
+    def non_fungible_token_media_resources_request(options)
+      params = {
+        updateList: options[:update_list],
+      }
+
+      if !options[:update_list].nil? &&
+          options[:update_list].is_a?(Array) && !options[:update_list].empty?
+        params[:updateList] = options[:update_list].map do |option|
+          {
+            tokenType: option[:token_type] || option[:tokenType],
+            tokenIndex: option[:token_index] || option[:tokenIndex],
           }
         end
       end
