@@ -73,7 +73,7 @@ client.time()
 - [ ] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/burn
 - [x] GET /v1/users/{userId}
 - [x] GET /v1/users/{userId}/transactions
-- [ ] GET /v1/users/{userId}/base-coin
+- [x] GET /v1/users/{userId}/base-coin
 - [ ] GET /v1/users/{userId}/service-tokens
 - [ ] GET /v1/users/{userId}/service-tokens/{contractId}
 - [ ] GET /v1/users/{userId}/item-tokens/{contractId}/fungibles

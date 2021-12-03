@@ -39,6 +39,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/transactions", query_params: transaction_page_request(query_params))
     end
 
+    def base_coin_balance_of_user(user_id)
+      get("/v1/users/#{user_id}/base-coin")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
