@@ -46,7 +46,7 @@ client.time()
 - [x] GET /v1/item-tokens/{contractId}/fungibles
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}/holders
-- [ ] GET /v1/item-tokens/{contractId}/non-fungibles
+- [x] GET /v1/item-tokens/{contractId}/non-fungibles
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/holders
