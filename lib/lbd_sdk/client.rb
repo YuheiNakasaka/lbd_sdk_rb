@@ -95,6 +95,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/transactions", query_params: transaction_page_request(query_params))
     end
 
+    def base_coin_balance_of_wallet(wallet_address)
+      get("/v1/wallets/#{wallet_address}/base-coin")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end

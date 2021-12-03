@@ -96,7 +96,7 @@ client.time()
 - [x] GET /v1/wallets
 - [x] GET /v1/wallets/{walletAddress}
 - [x] GET /v1/wallets/{walletAddress}/transactions
-- [ ] GET /v1/wallets/{walletAddress}/base-coin C
+- [x] GET /v1/wallets/{walletAddress}/base-coin
 - [ ] GET /v1/wallets/{walletAddress}/service-tokens
 - [ ] GET /v1/wallets/{walletAddress}/service-tokens/{contractId}
 - [ ] GET /v1/wallets/{walletAddress}/item-tokens/{contractId}/fungibles
