@@ -227,6 +227,10 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}/mint", payload: fungible_token_mint_request(payload))
     end
 
+    def burn_fungible_token(contract_id, token_type, payload = {})
+      post("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}/burn", payload: fungible_token_burn_request(payload))
+    end
+
     def fungible_token(contract_id, token_type)
       get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}")
     end
@@ -661,6 +665,20 @@ module LbdSdk
         params[:toUserId] = options[:to_user_id]
       elsif !options[:to_address].nil?
         params[:toAddress] = options[:to_address]
+      end
+      params
+    end
+
+    def fungible_token_burn_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        amount: options[:amount].to_s,
+      }
+      if !options[:from_user_id].nil?
+        params[:fromUserId] = options[:from_user_id]
+      elsif !options[:from_address].nil?
+        params[:fromAddress] = options[:from_address]
       end
       params
     end
