@@ -113,7 +113,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/fungibles/{tokenType}/transfer
 - [x] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/transfer
 - [x] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/batch-transfer
-- [ ] POST /v1/memos
+- [x] POST /v1/memos
 - [x] GET /v1/memos/{txHash}
 - [x] GET /v1/time
 - [x] GET /v1/transactions/{txHash}

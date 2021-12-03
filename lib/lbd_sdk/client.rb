@@ -271,6 +271,10 @@ module LbdSdk
       get("/v1/memos/#{tx_hash}")
     end
 
+    def create_memo(payload = {})
+      post('/v1/memos', payload: memo_request(payload))
+    end
+
     def transaction_result(tx_hash)
       get("/v1/transactions/#{tx_hash}")
     end
@@ -553,6 +557,14 @@ module LbdSdk
         params[:toAddress] = options[:to_address]
       end
       params
+    end
+
+    def memo_request(options)
+      {
+        walletAddress: options[:wallet_address],
+        walletSecret: options[:wallet_secret],
+        memo: options[:memo],
+      }
     end
   end
 end
