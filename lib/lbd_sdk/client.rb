@@ -83,6 +83,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/item-tokens/#{contract_id}/proxy")
     end
 
+    def wallets()
+      get('/v1/wallets')
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
