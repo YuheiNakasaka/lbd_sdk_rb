@@ -91,6 +91,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/children", query_params: page_request(query_params))
     end
 
+    def parent_of_non_fungible_token(contract_id, token_type, tokenIndex)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/parent")
+    end
+
     def httpclient
       HTTPClient.new
     end

@@ -52,7 +52,7 @@ client.time()
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/holders
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/holder
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/children
-- [ ] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/parent
+- [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/parent
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/root
 - [ ] GET /v1/item-tokens/{contractId}/fungibles/icon/{request-id}/status
 - [ ] GET /v1/item-tokens/{contractId}/non-fungibles/icon/{request-id}/status
