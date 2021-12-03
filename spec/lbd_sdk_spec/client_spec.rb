@@ -24,12 +24,4 @@ RSpec.describe LbdSdk::Client do
     expect(client.api_secret_key).to be(api_secret_key)
     expect(client.endpoint).to be(described_class::DEFAULT_ENDPOINT)
   end
-
-  describe '#time' do
-    it 'should return time' do
-      # VCR.use_cassette('time') do
-      #   expect(client.time).to be_a(Time)
-      # end
-    end
-  end
 end
