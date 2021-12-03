@@ -63,6 +63,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles", query_params: page_request(query_params))
     end
 
+    def non_fungible_token_balances_by_type_of_user(user_id, contractId, token_type, query_params: {})
+      get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles/#{token_type}", query_params: page_request(query_params))
+    end
+
     def non_fungible_token_balance_of_user(user_id, contractId, token_type, token_index)
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles/#{token_type}/#{token_index}")
     end
