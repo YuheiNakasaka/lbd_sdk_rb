@@ -251,6 +251,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
+    def create_non_fungible_token(contract_id, payload = {})
+      post("/v1/item-tokens/#{contract_id}/non-fungibles", payload: non_fungible_token_create_update_request(payload))
+    end
+
     def non_fungible_token(contract_id, token_type, token_index)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
