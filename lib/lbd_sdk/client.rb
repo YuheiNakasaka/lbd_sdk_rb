@@ -179,6 +179,10 @@ module LbdSdk
       post("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/transfer", payload: transfer_non_fungible_token_request(payload))
     end
 
+    def batch_transfer_non_fungible_token_of_wallet(wallet_address, contract_id, payload = {})
+      post("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/batch-transfer", payload: batch_transfer_non_fungible_token_request(payload))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
@@ -521,6 +525,28 @@ module LbdSdk
       params = {
         walletSecret: options[:wallet_secret],
       }
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
+      end
+      params
+    end
+
+    def batch_transfer_non_fungible_token_request(options)
+      params = {
+        walletSecret: options[:wallet_secret],
+      }
+
+      if !options[:transfer_list].nil? &&
+          options[:transfer_list].is_a?(Array) && !options[:transfer_list].empty?
+        params[:transferList] = options[:transfer_list].map do |obj|
+          {
+            tokenId: obj[:token_id] || obj[:tokenId],
+          }
+        end
+      end
+
       if !options[:to_user_id].nil?
         params[:toUserId] = options[:to_user_id]
       elsif !options[:to_address].nil?
