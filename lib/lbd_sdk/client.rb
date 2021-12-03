@@ -79,6 +79,10 @@ module LbdSdk
       post("/v1/users/#{user_id}/service-tokens/#{contract_id}/request-proxy", query_params: {requestType: request_type}, payload: user_proxy_request(payload))
     end
 
+    def issue_item_token_proxy_request(user_id, contract_id, request_type, payload = {})
+      post("/v1/users/#{user_id}/item-tokens/#{contract_id}/request-proxy", query_params: {requestType: request_type}, payload: user_proxy_request(payload))
+    end
+
     def commit_proxy_request(request_session_token)
       post("/v1/user-requests/#{request_session_token}/commit")
     end
