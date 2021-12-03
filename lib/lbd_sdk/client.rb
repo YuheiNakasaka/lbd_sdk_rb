@@ -219,6 +219,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
     end
 
+    def create_fungible_token(contract_id, payload = {})
+      post("/v1/item-tokens/#{contract_id}/fungibles", payload: fungible_token_create_update_request(payload))
+    end
+
     def fungible_token(contract_id, token_type)
       get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}")
     end
