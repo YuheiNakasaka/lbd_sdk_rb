@@ -79,6 +79,10 @@ module LbdSdk
       post("/v1/users/#{user_id}/base-coin/request-transfer", query_params: {requestType: request_type}, payload: issue_transfer_session_token_request(payload))
     end
 
+    def issue_session_token_for_service_token_transfer(user_id, contract_id, request_type, payload = {})
+      post("/v1/users/#{user_id}/service-tokens/#{contract_id}/request-transfer", query_params: {requestType: request_type}, payload: issue_transfer_session_token_request(payload))
+    end
+
     def issue_service_token_proxy_request(user_id, contract_id, request_type, payload = {})
       post("/v1/users/#{user_id}/service-tokens/#{contract_id}/request-proxy", query_params: {requestType: request_type}, payload: user_proxy_request(payload))
     end
