@@ -31,6 +31,10 @@ client = LbdSdk::Client.new do |config|
 end
 
 client.time()
+
+client.user_detail("<your-user-id>")
+
+client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 ```
 
 ## TODO

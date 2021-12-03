@@ -35,7 +35,7 @@ module LbdSdk
       get("/v1/users/#{user_id}")
     end
 
-    def user_transactions(user_id, query_params: {})
+    def user_transactions(user_id, query_params = {})
       get("/v1/users/#{user_id}/transactions", query_params: transaction_page_request(query_params))
     end
 
@@ -43,7 +43,7 @@ module LbdSdk
       get("/v1/users/#{user_id}/base-coin")
     end
 
-    def service_token_balances_of_user(user_id, query_params: {})
+    def service_token_balances_of_user(user_id, query_params = {})
       get("/v1/users/#{user_id}/service-tokens", query_params: page_request(query_params))
     end
 
@@ -51,7 +51,7 @@ module LbdSdk
       get("/v1/users/#{user_id}/service-tokens/#{contract_id}")
     end
 
-    def fungible_token_balances_of_user(user_id, contractId, query_params: {})
+    def fungible_token_balances_of_user(user_id, contractId, query_params = {})
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/fungibles", query_params: page_request(query_params))
     end
 
@@ -59,11 +59,11 @@ module LbdSdk
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/fungibles/#{token_type}")
     end
 
-    def non_fungible_token_balances_of_user(user_id, contractId, query_params: {})
+    def non_fungible_token_balances_of_user(user_id, contractId, query_params = {})
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles", query_params: page_request(query_params))
     end
 
-    def non_fungible_token_balances_by_type_of_user(user_id, contractId, token_type, query_params: {})
+    def non_fungible_token_balances_by_type_of_user(user_id, contractId, token_type, query_params = {})
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
@@ -91,7 +91,7 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}")
     end
 
-    def wallet_transactions(wallet_address, query_params: {})
+    def wallet_transactions(wallet_address, query_params = {})
       get("/v1/wallets/#{wallet_address}/transactions", query_params: transaction_page_request(query_params))
     end
 
@@ -99,7 +99,7 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/base-coin")
     end
 
-    def service_token_balances_of_wallet(wallet_address, query_params: {})
+    def service_token_balances_of_wallet(wallet_address, query_params = {})
       get("/v1/wallets/#{wallet_address}/service-tokens", query_params: page_request(query_params))
     end
 
@@ -107,7 +107,7 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/service-tokens/#{contract_id}")
     end
 
-    def fungible_token_balances_of_wallet(wallet_address, contract_id, query_params: {})
+    def fungible_token_balances_of_wallet(wallet_address, contract_id, query_params = {})
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
     end
 
@@ -115,11 +115,11 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles/#{tokenType}")
     end
 
-    def non_fungible_token_balances_of_wallet(wallet_address, contract_id, query_params: {})
+    def non_fungible_token_balances_of_wallet(wallet_address, contract_id, query_params = {})
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles", query_params: page_request(query_params))
     end
 
-    def non_fungible_token_balances_by_type_of_wallet(wallet_address, contract_id, token_type, query_params: {})
+    def non_fungible_token_balances_by_type_of_wallet(wallet_address, contract_id, token_type, query_params = {})
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
@@ -139,7 +139,7 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}")
     end
 
-    def service_token_holders(contract_id, query_params: {})
+    def service_token_holders(contract_id, query_params = {})
       get("/v1/service-tokens/#{contract_id}/holders", query_params: page_request(query_params))
     end
 
@@ -147,7 +147,7 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}")
     end
 
-    def fungible_tokens(contract_id, query_params: {})
+    def fungible_tokens(contract_id, query_params = {})
       get("/v1/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
     end
 
@@ -155,15 +155,15 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}")
     end
 
-    def fungible_token_holders(contract_id, token_type, query_params: {})
+    def fungible_token_holders(contract_id, token_type, query_params = {})
       get("/v1/item-tokens/#{contract_id}/fungibles/#{token_type}/holders", query_params: page_request(query_params))
     end
 
-    def non_fungible_tokens(contract_id, query_params: {})
+    def non_fungible_tokens(contract_id, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles", query_params: page_request(query_params))
     end
 
-    def non_fungible_token_type(contract_id, token_type, query_params: {})
+    def non_fungible_token_type(contract_id, token_type, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
@@ -171,7 +171,7 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}")
     end
 
-    def non_fungible_token_type_holders(contract_id, token_type, query_params: {})
+    def non_fungible_token_type_holders(contract_id, token_type, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/holders", query_params: page_request(query_params))
     end
 
@@ -179,7 +179,7 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/holder")
     end
 
-    def children_of_non_fungible_token(contract_id, token_type, tokenIndex, query_params: {})
+    def children_of_non_fungible_token(contract_id, token_type, tokenIndex, query_params = {})
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/children", query_params: page_request(query_params))
     end
 
