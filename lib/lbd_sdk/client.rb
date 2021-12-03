@@ -103,6 +103,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/service-tokens", query_params: page_request(query_params))
     end
 
+    def service_token_balance_of_wallet(wallet_address, contract_id)
+      get("/v1/wallets/#{wallet_address}/service-tokens/#{contract_id}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
