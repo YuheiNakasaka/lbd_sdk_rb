@@ -55,6 +55,10 @@ module LbdSdk
       get("/v1/users/#{user_id}/item-tokens/#{contractId}/fungibles", query_params: page_request(query_params))
     end
 
+    def fungible_token_balance_of_user(user_id, contractId, token_type)
+      get("/v1/users/#{user_id}/item-tokens/#{contractId}/fungibles/#{token_type}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
