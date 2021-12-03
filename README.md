@@ -61,7 +61,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] GET /v1/item-tokens/{contractId}/fungibles/icon/{request-id}/status
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/icon/{request-id}/status
 - [x] PUT /v1/item-tokens/{contractId}/fungibles/{tokenType}
-- [ ] PUT /v1/item-tokens/{contractId}/fungibles/icon
+- [x] PUT /v1/item-tokens/{contractId}/fungibles/icon
 - [x] PUT /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] PUT /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [ ] PUT /v1/item-tokens/{contractId}/non-fungibles/icon

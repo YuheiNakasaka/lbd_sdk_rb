@@ -316,6 +316,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/fungibles/icon/#{request_id}/status")
     end
 
+    def update_fungible_token_media_resources(contract_id, token_types)
+      put("/v1/item-tokens/#{contract_id}/fungibles/icon", payload: fungible_token_media_resources_request(token_types))
+    end 
+
     def non_fungible_token_media_resources_update_status(contract_id, request_id)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/icon/#{request_id}/status")
     end
@@ -795,6 +799,23 @@ module LbdSdk
       elsif !options[:from_address].nil?
         params[:fromAddress] = options[:from_address]
       end
+      params
+    end
+
+    def fungible_token_media_resources_request(options)
+      params = {
+        updateList: options[:update_list],
+      }
+
+      if !options[:update_list].nil? &&
+          options[:update_list].is_a?(Array) && !options[:update_list].empty?
+        params[:updateList] = options[:update_list].map do |obj|
+          {
+            tokenType: obj[:token_type] || obj[:tokenType],
+          }
+        end
+      end
+
       params
     end
 
