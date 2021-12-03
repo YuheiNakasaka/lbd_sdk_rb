@@ -99,6 +99,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/root")
     end
 
+    def fungible_token_media_resources_update_status(contract_id, request_id)
+      get("/v1/item-tokens/#{contract_id}/fungibles/icon/#{request_id}/status")
+    end
+
     def httpclient
       HTTPClient.new
     end
