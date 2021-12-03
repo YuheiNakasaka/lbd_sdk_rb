@@ -83,6 +83,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/holders", query_params: page_request(query_params))
     end
 
+    def non_fungible_token_holder(contract_id, token_type, token_index)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/holder")
+    end
+
     def httpclient
       HTTPClient.new
     end
