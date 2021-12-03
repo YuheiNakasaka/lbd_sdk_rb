@@ -95,6 +95,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/parent")
     end
 
+    def root_of_non_fungible_token(contract_id, token_type, tokenIndex)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/root")
+    end
+
     def httpclient
       HTTPClient.new
     end
