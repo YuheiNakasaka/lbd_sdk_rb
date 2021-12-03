@@ -243,8 +243,12 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
 
-    def update_non_fungible_token(contract_id, token_type, payload = {})
-      put("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", payload: fungible_token_create_update_request(payload))
+    def update_non_fungible_token_type(contract_id, token_type, payload = {})
+      put("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", payload: non_fungible_token_create_update_request(payload))
+    end
+
+    def update_non_fungible_token(contract_id, token_type, token_index, payload = {})
+      put("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}", payload: non_fungible_token_create_update_request(payload))
     end
 
     def non_fungible_token_type_holders(contract_id, token_type, query_params = {})

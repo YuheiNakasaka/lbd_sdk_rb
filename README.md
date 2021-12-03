@@ -63,7 +63,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] PUT /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [ ] PUT /v1/item-tokens/{contractId}/fungibles/icon
 - [x] PUT /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
-- [ ] PUT /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
+- [x] PUT /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [ ] PUT /v1/item-tokens/{contractId}/non-fungibles/icon
 - [ ] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/parent
 - [ ] DELETE /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/parent
