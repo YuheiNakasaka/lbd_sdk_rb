@@ -35,6 +35,31 @@ client.time()
 client.user_detail("<your-user-id>")
 
 client.user_transactions("<your-user-id>", {page: 1, limit: 1})
+
+client.create_non_fungible_token("<contract_id>", {
+  owner_address: "owner_address",
+  owner_secret: "owner_secret",
+  name: "SampleToken",
+})
+
+client.mint_non_fungible_token("contract_id", "token_type", {
+  owner_address: "owner_address",
+  owner_secret: "owner_secret",
+  name: "SampleToken",
+  to_user_id: "yout-user-id"
+})
+
+client.update_non_fungible_token("contract_id", "token_type", "token_index", {
+  owner_address: "owner_address",
+  owner_secret: "owner_secret",
+  name: "SampleToken2",
+})
+
+client.burn_non_fungible_token("contract_id", "token_type", "token_index", {
+  owner_address: "owner_address",
+  owner_secret: "owner_secret",
+  from_user_id: "yout-user-id"
+})
 ```
 
 ## TODO
