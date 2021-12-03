@@ -87,6 +87,10 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/holder")
     end
 
+    def children_of_non_fungible_token(contract_id, token_type, tokenIndex, query_params: {})
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/children", query_params: page_request(query_params))
+    end
+
     def httpclient
       HTTPClient.new
     end
