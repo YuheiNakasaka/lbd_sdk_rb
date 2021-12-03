@@ -94,7 +94,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] POST /v1/users/{userId}/item-tokens/{contractId}/request-proxy
 - [x] POST /v1/user-requests/{requestSessionToken}/commit
 - [x] POST /v1/users/{userId}/service-tokens/{contractId}/transfer
-- [ ] POST /v1/users/{userId}/item-tokens/{contractId}/fungibles/{tokenType}/transfer
+- [x] POST /v1/users/{userId}/item-tokens/{contractId}/fungibles/{tokenType}/transfer
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/transfer
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/batch-transfer
 - [x] GET /v1/wallets
