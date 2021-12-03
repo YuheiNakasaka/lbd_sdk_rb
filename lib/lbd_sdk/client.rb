@@ -75,6 +75,10 @@ module LbdSdk
       get("/v1/user-requests/#{request_session_token}")
     end
 
+    def issue_session_token_for_base_coin_transfer(user_id, request_type, payload = {})
+      post("/v1/users/#{user_id}/base-coin/request-transfer", query_params: {requestType: request_type}, payload: issue_transfer_session_token_request(payload))
+    end
+
     def issue_service_token_proxy_request(user_id, contract_id, request_type, payload = {})
       post("/v1/users/#{user_id}/service-tokens/#{contract_id}/request-proxy", query_params: {requestType: request_type}, payload: user_proxy_request(payload))
     end
@@ -354,6 +358,24 @@ module LbdSdk
         ownerAddress: options[:owner_address],
         landingUri: options[:landing_uri],
       }
+    end
+
+    def issue_transfer_session_token_request(options)
+      params = {
+        amount: options[:amount].to_s,
+        landingUri: options[:landing_uri],
+      }
+
+      if params[:amount].to_i <= 0
+        raise ArgumentError, 'Invalid amount - $amount is less than zero '
+      end
+
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
+      end
+      params
     end
   end
 end
