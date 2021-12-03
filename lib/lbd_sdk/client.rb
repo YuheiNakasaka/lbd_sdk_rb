@@ -147,8 +147,8 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
     end
 
-    def fungible_token_balance_of_wallet(wallet_address, contract_id, tokenType)
-      get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles/#{tokenType}")
+    def fungible_token_balance_of_wallet(wallet_address, contract_id, token_type)
+      get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles/#{token_type}")
     end
 
     def non_fungible_token_balances_of_wallet(wallet_address, contract_id, query_params = {})
@@ -223,8 +223,8 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
-    def non_fungible_token(contract_id, token_type, tokenIndex)
-      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}")
+    def non_fungible_token(contract_id, token_type, token_index)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
 
     def non_fungible_token_type_holders(contract_id, token_type, query_params = {})
@@ -235,16 +235,16 @@ module LbdSdk
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/holder")
     end
 
-    def children_of_non_fungible_token(contract_id, token_type, tokenIndex, query_params = {})
-      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/children", query_params: page_request(query_params))
+    def children_of_non_fungible_token(contract_id, token_type, token_index, query_params = {})
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/children", query_params: page_request(query_params))
     end
 
-    def parent_of_non_fungible_token(contract_id, token_type, tokenIndex)
-      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/parent")
+    def parent_of_non_fungible_token(contract_id, token_type, token_index)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/parent")
     end
 
-    def root_of_non_fungible_token(contract_id, token_type, tokenIndex)
-      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{tokenIndex}/root")
+    def root_of_non_fungible_token(contract_id, token_type, token_index)
+      get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}/root")
     end
 
     def fungible_token_media_resources_update_status(contract_id, request_id)
