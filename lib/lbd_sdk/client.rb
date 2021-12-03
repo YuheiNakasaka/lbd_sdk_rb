@@ -99,6 +99,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/base-coin")
     end
 
+    def service_token_balances_of_wallet(wallet_address, query_params: {})
+      get("/v1/wallets/#{wallet_address}/service-tokens", query_params: page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
