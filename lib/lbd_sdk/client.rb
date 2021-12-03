@@ -203,6 +203,10 @@ module LbdSdk
       get("/v1/memos/#{tx_hash}")
     end
 
+    def transaction_result(tx_hash)
+      get("/v1/transactions/#{tx_hash}")
+    end
+
     def httpclient
       HTTPClient.new
     end

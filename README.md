@@ -112,7 +112,7 @@ client.time()
 - [ ] POST /v1/memos
 - [x] GET /v1/memos/{txHash}
 - [x] GET /v1/time
-- [ ] GET /v1/transactions/{txHash}
+- [x] GET /v1/transactions/{txHash}
 
 ## Development
 
