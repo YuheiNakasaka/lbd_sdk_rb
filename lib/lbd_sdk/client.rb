@@ -107,6 +107,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/service-tokens/#{contract_id}")
     end
 
+    def fungible_token_balances_of_wallet(wallet_address, contract_id, query_params: {})
+      get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/fungibles", query_params: page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
