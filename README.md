@@ -95,7 +95,7 @@ client.time()
 - [ ] POST /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/batch-transfer
 - [x] GET /v1/wallets
 - [x] GET /v1/wallets/{walletAddress}
-- [ ] GET /v1/wallets/{walletAddress}/transactions
+- [x] GET /v1/wallets/{walletAddress}/transactions
 - [ ] GET /v1/wallets/{walletAddress}/base-coin C
 - [ ] GET /v1/wallets/{walletAddress}/service-tokens
 - [ ] GET /v1/wallets/{walletAddress}/service-tokens/{contractId}

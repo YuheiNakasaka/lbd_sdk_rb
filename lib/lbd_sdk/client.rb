@@ -91,6 +91,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}")
     end
 
+    def wallet_transactions(wallet_address, query_params: {})
+      get("/v1/wallets/#{wallet_address}/transactions", query_params: transaction_page_request(query_params))
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
