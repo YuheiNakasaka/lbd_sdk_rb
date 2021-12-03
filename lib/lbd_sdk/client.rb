@@ -123,6 +123,10 @@ module LbdSdk
       get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/#{token_type}", query_params: page_request(query_params))
     end
 
+    def non_fungible_token_balance_of_wallet(wallet_address, contract_id, token_type, token_index)
+      get("/v1/wallets/#{wallet_address}/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
