@@ -75,6 +75,10 @@ module LbdSdk
       get("/v1/user-requests/#{request_session_token}")
     end
 
+    def service_token_proxy_status_of_user(user_id, contract_id)
+      get("/v1/users/#{user_id}/service-tokens/#{contract_id}/proxy")
+    end
+
     def service_detail(service_id)
       get("/v1/services/#{service_id}")
     end
