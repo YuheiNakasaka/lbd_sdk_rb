@@ -95,6 +95,10 @@ module LbdSdk
       post("/v1/user-requests/#{request_session_token}/commit")
     end
 
+    def transfer_service_token_of_user(user_id, contract_id, payload = {})
+      post("/v1/users/#{user_id}/service-tokens/#{contract_id}/transfer", payload: transfer_service_token_proxy_request(payload))
+    end
+
     def service_token_proxy_status_of_user(user_id, contract_id)
       get("/v1/users/#{user_id}/service-tokens/#{contract_id}/proxy")
     end
@@ -374,6 +378,20 @@ module LbdSdk
         raise ArgumentError, 'Invalid amount - $amount is less than zero '
       end
 
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      elsif !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
+      end
+      params
+    end
+
+    def transfer_service_token_proxy_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        amount: options[:amount].to_s,
+      }
       if !options[:to_user_id].nil?
         params[:toUserId] = options[:to_user_id]
       elsif !options[:to_address].nil?
