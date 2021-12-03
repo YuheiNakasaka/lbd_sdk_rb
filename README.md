@@ -25,7 +25,7 @@ Or install it yourself as:
 
 ```ruby
 client = LbdSdk::Client.new do |config|
-  config.endpoint = 'https://test-api.blockchain.line.me/'
+  config.endpoint = 'https://test-api.blockchain.line.me'
   config.api_key = 'your_api_key'
   config.api_secret_key = 'your_secret_key'
 end
