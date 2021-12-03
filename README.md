@@ -108,7 +108,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] GET /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles
 - [x] GET /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
-- [ ] POST /v1/wallets/{walletAddress}/base-coin/transfer
+- [x] POST /v1/wallets/{walletAddress}/base-coin/transfer
 - [ ] POST /v1/wallets/{walletAddress}/service-tokens/{contractId}/transfer
 - [ ] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/fungibles/{tokenType}/transfer
 - [ ] POST /v1/wallets/{walletAddress}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/transfer
