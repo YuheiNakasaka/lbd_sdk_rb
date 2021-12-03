@@ -43,7 +43,7 @@ client.user_transactions("<your-user-id>", {page: 1, limit: 1})
 - [x] GET /v1/service-tokens/
 - [x] GET /v1/service-tokens/{contractId}
 - [x] PUT /v1/service-tokens/{contractId}
-- [ ] POST /v1/service-tokens/{contractId}/mint
+- [x] POST /v1/service-tokens/{contractId}/mint
 - [ ] POST /v1/service-tokens/{contractId}/burn-from
 - [x] GET /v1/service-tokens/{contractId}/holders
 - [x] GET /v1/item-tokens/{contractId}

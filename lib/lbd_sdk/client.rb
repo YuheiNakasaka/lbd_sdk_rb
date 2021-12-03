@@ -143,6 +143,10 @@ module LbdSdk
       put("/v1/service-tokens/#{contract_id}", payload: update_service_token_request(payload))
     end
 
+    def mint_service_token(contract_id, payload = {})
+      post("/v1/service-tokens/#{contract_id}/mint", payload: mint_service_token_request(payload))
+    end
+
     def service_token_holders(contract_id, query_params = {})
       get("/v1/service-tokens/#{contract_id}/holders", query_params: page_request(query_params))
     end
@@ -225,6 +229,11 @@ module LbdSdk
       end
     end
 
+    def post(endpoint_path, payload: {})
+      headers = request_headers(endpoint_path: endpoint_path, method: 'POST', payload: payload)
+      httpclient.post("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
+    end
+
     def put(endpoint_path, payload: {})
       headers = request_headers(endpoint_path: endpoint_path, method: 'PUT', payload: payload)
       httpclient.put("#{@endpoint}#{endpoint_path}", payload.to_json, headers)
@@ -287,6 +296,21 @@ module LbdSdk
       end
       if !options[:meta].nil?
         params[:meta] = options[:meta]
+      end
+      params
+    end
+
+    def mint_service_token_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        amount: options[:amount].to_s,
+      }
+      if !options[:to_user_id].nil?
+        params[:toUserId] = options[:to_user_id]
+      end
+      if !options[:to_address].nil?
+        params[:toAddress] = options[:to_address]
       end
       params
     end
