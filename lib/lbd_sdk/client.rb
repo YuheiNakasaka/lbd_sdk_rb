@@ -263,6 +263,11 @@ module LbdSdk
       post("/v1/item-tokens/#{contract_id}/non-fungibles/multi-mint", payload: non_fungible_token_multi_mint_request(payload))
     end
 
+    def multi_mint_non_fungible_token_for_multi_recipients(contract_id, payload = {})
+      warn('Not Implemented yet')
+      post("/v1/item-tokens/#{contract_id}/non-fungibles/multi-recipients/multi-mint", payload: non_fungible_token_multi_mint_multi_recipients_request(payload))
+    end
+
     def non_fungible_token(contract_id, token_type, token_index)
       get("/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}")
     end
@@ -740,6 +745,37 @@ module LbdSdk
         params[:toUserId] = options[:to_user_id]
       elsif !options[:to_address].nil?
         params[:toAddress] = options[:to_address]
+      end
+
+      params
+    end
+
+    def non_fungible_token_multi_mint_multi_recipients_request(options)
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+        mintList: options[:mint_list],
+      }
+
+      if !options[:mint_list].nil? && options[:mint_list].is_a?(Array) && !options[:mint_list].empty?
+        params[:mintList] = options[:mint_list].map do |option|
+          inner_params = {
+            tokenType: option[:token_type],
+            name: option[:name],
+          }
+
+          if !option[:meta].nil?
+            inner_params[:meta] = option[:meta]
+          end
+
+          if !option[:to_user_id].nil?
+            inner_params[:toUserId] = option[:to_user_id]
+          elsif !option[:to_address].nil?
+            inner_params[:toAddress] = option[:to_address]
+          end
+
+          inner_params
+        end
       end
 
       params
