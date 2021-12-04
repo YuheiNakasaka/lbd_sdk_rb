@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require 'base64'
-require 'net/http'
-require 'openssl'
-require 'uri'
-
 module LbdSdk
   # Client for the LINE Blockchain API
   #
