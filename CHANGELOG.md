@@ -1,3 +1,7 @@
+# 0.1.2(2021-12-22)
+
+- Add `GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/with-type`.
+
 # 0.1.1(2021-12-04)
 
 - Refactor payload handling.
