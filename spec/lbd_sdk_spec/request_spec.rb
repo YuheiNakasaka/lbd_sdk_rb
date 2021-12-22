@@ -30,6 +30,25 @@ RSpec.describe LbdSdk::Request do
     end
   end
 
+  describe '#cursor_page_request' do
+    it 'returns a default hash' do
+      expect(instance.cursor_page_request({})).to eq({
+        limit: 10,
+        orderBy: 'desc',
+        pageToken: '',
+      })
+    end
+
+    it 'should be set arbitrary params' do
+      pageToken = 'eJxtzk0PgjAMBuD/0jMHESXoDQETYoJGd9ATWbYuEnDAmAQk/HfnZzzYU/ukfdMBKOcKm8aXPCilVpTp2HRFgUxnpUyEXmeFRgXL4bMKS9BFJnM7rx1Ptfx661rnush7wRhdVBd0WYVdPavPSL2uBQvYN9nc2p4n3LkjYLSgVBzVqjcabBOy9wOSxmEaRocgJdtNlKTktIt+5zgJo+MTTCwV78f+51ugyxwl6St88ORZ9odjybEz/uKpDeN4BzAdV4M='
+      expect(instance.cursor_page_request({limit: 1, order_by: 'asc', page_token: pageToken})).to eq({
+        limit: 1,
+        orderBy: 'asc',
+        pageToken: pageToken,
+      })
+    end
+  end
+
   describe '#transaction_page_request' do
     it 'returns a default hash' do
       expect(instance.transaction_page_request({})).to eq({

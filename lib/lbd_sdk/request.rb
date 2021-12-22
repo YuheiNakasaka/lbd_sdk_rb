@@ -9,6 +9,14 @@ module LbdSdk
         orderBy: options[:order_by] || 'desc',
       }
     end
+
+    def cursor_page_request(options)
+      {
+        limit: options[:limit] || 10,
+        orderBy: options[:order_by] || 'desc',
+        pageToken: options[:page_token] || '',
+      }
+    end
   
     def transaction_page_request(options)
       params = {
