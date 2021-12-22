@@ -108,6 +108,7 @@ client.burn_non_fungible_token("contract_id", "token_type", "token_index", {
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/fungibles
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/fungibles/{tokenType}
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles
+- [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/with-type
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/users/{userId}/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [x] GET /v1/user-requests/{requestSessionToken}
