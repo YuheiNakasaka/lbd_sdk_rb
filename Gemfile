@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'prettier', '~> 2.0.0'
   gem 'rake', '~> 12.0'
   gem 'rspec', '~> 3.0'
   gem 'rubocop', '~> 1.12.1', require: false

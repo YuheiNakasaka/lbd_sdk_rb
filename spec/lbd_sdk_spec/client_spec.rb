@@ -11,13 +11,9 @@ RSpec.describe LbdSdk::Client do
     end
   end
 
-  let(:api_key) do
-    'dummy_api_key'
-  end
+  let(:api_key) { 'dummy_api_key' }
 
-  let(:api_secret_key) do
-    'dummy_secret_key'
-  end
+  let(:api_secret_key) { 'dummy_secret_key' }
 
   it 'should be initialized' do
     expect(client.api_key).to be(api_key)
