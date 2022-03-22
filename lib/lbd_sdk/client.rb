@@ -381,6 +381,17 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}")
     end
 
+    def issue_service_token(payload)
+      post('/v1/service-tokens', payload: issue_service_token_request(payload))
+    end
+
+    def issued_service_token_by_tx_hash(tx_hash, query_params = {})
+      get(
+        "/v1/service-tokens/by-txHash/#{tx_hash}",
+        query_params: issued_service_token_by_tx_hash_request(query_params),
+      )
+    end
+
     def update_service_token(contract_id, payload = {})
       put(
         "/v1/service-tokens/#{contract_id}",

@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
+require 'lbd_sdk/request_param_validator'
+require 'lbd_sdk/hash_converter'
+
 module LbdSdk
   module Request
+    include RequestParamValidator
+    include HashConverter
+
     def page_request(options)
       {
         limit: options[:limit] || 10,
@@ -28,6 +34,50 @@ module LbdSdk
       params[:after] = options[:after] if !options[:after].nil?
       params[:msgType] = options[:msgType] if !options[:msgType].nil?
       params
+    end
+
+    def issue_service_token_request(options)
+      if options[:service_wallet_address].nil? ||
+           options[:service_wallet_secret].nil?
+        raise ArgumentError,
+              'service_wallet_address and service_wallet_secret are required'
+      end
+
+      if is_valid_wallet_address(options[:service_wallet_address]) == false
+        raise ArgumentError, 'service_wallet_address is invalid'
+      end
+
+      if is_valid_token_name(options[:name]) == false
+        raise ArgumentError, 'name is invalid'
+      end
+
+      if is_valid_symbol(options[:symbol]) == false
+        raise ArgumentError, 'symbol is invalid'
+      end
+
+      if is_valid_initial_supply(options[:initial_supply]) == false
+        raise ArgumentError, 'initial_supply is invalid'
+      end
+
+      if is_valid_wallet_address(options[:recipient_wallet_address]) == false
+        raise ArgumentError, 'recipient_wallet_address is invalid'
+      end
+
+      if is_valid_base_uri(options[:img_uri]) == false
+        raise ArgumentError, 'img_uri is invalid'
+      end
+
+      camelize(options)
+    end
+
+    def issued_service_token_by_tx_hash_request(options)
+      options[:is_only_contract_id] =
+        if options[:is_only_contract_id].nil?
+          false
+        else
+          options[:is_only_contract_id]
+        end
+      camelize(options)
     end
 
     def update_service_token_request(options)

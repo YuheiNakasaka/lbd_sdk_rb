@@ -74,4 +74,109 @@ RSpec.describe LbdSdk::Request do
       )
     end
   end
+
+  describe '#issue_service_token_request' do
+    before do
+      @payload = {
+        service_wallet_address: 'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        service_wallet_secret: 'secret',
+        name: 'abc',
+        symbol: 'ABCDE',
+        initial_supply: '1234567890',
+        recipient_wallet_address:
+          'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab',
+        img_uri: 'https://example.com/',
+      }
+
+      @camelized_payload = {
+        serviceWalletAddress: 'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        serviceWalletSecret: 'secret',
+        name: 'abc',
+        symbol: 'ABCDE',
+        initialSupply: '1234567890',
+        recipientWalletAddress: 'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab',
+        imgUri: 'https://example.com/',
+      }
+    end
+    it 'returns valid request hash' do
+      expect(instance.issue_service_token_request(@payload)).to eq(
+        @camelized_payload,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_address] = nil
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_secret] = nil
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_address] = 'invalid'
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:name] = ''
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:symbol] = 'A'
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:initial_supply] = 'A'
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:recipient_wallet_address] = 'invalid'
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:img_uri] = 'https://example.com/hoge.png'
+      expect { instance.issue_service_token_request(@payload) }.to raise_error(
+        ArgumentError,
+      )
+    end
+  end
+
+  describe '#issued_service_token_by_tx_hash_request' do
+    before do
+      @payload = { is_only_contract_id: true }
+      @camelized_payload = { isOnlyContractId: false }
+    end
+    it 'returns valid request hash' do
+      expect(instance.issued_service_token_by_tx_hash_request({})).to eq(
+        @camelized_payload,
+      )
+    end
+
+    it 'returns valid request hash' do
+      @camelized_payload[:isOnlyContractId] = true
+      expect(instance.issued_service_token_by_tx_hash_request(@payload)).to eq(
+        @camelized_payload,
+      )
+    end
+  end
 end
