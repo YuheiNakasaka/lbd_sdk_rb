@@ -19,14 +19,18 @@ module LbdSdk
           (l_key_value.keys | elm.keys).each do |lkey|
             l_value = ''
             l_value = elm[lkey] if elm.keys.include?(lkey)
-            l_key_value[lkey] = if l_key_value.keys.include?(lkey)
-                                  "#{l_key_value[lkey]},#{l_value}"
-                                else
-                                  "#{',' * i}#{l_value}"
-                                end
+            l_key_value[lkey] =
+              if l_key_value.keys.include?(lkey)
+                "#{l_key_value[lkey]},#{l_value}"
+              else
+                "#{',' * i}#{l_value}"
+              end
           end
         end
-        l_key_value.sort.map { |lkey, lvalue| "#{key}.#{lkey}=#{lvalue}" }.join('&')
+        l_key_value
+          .sort
+          .map { |lkey, lvalue| "#{key}.#{lkey}=#{lvalue}" }
+          .join('&')
       end
     end
   end

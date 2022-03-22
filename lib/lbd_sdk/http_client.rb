@@ -19,13 +19,9 @@ module LbdSdk
     # @return [Net::HTTP]
     def http(uri)
       http = Net::HTTP.new(uri.host, uri.port)
-      if uri.scheme == 'https'
-        http.use_ssl = true
-      end
+      http.use_ssl = true if uri.scheme == 'https'
 
-      http_options&.each do |key, value|
-        http.send("#{key}=", value)
-      end
+      http_options&.each { |key, value| http.send("#{key}=", value) }
 
       http
     end

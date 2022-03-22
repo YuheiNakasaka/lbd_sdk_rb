@@ -24,42 +24,60 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-client = LbdSdk::Client.new do |config|
-  config.endpoint = 'https://test-api.blockchain.line.me'
-  config.api_key = 'your_api_key'
-  config.api_secret_key = 'your_secret_key'
-end
+client =
+  LbdSdk::Client.new do |config|
+    config.endpoint = 'https://test-api.blockchain.line.me'
+    config.api_key = 'your_api_key'
+    config.api_secret_key = 'your_secret_key'
+  end
 
-client.time()
+client.time
 
-client.user_detail("<your-user-id>")
+client.user_detail('<your-user-id>')
 
-client.user_transactions("<your-user-id>", {page: 1, limit: 1})
+client.user_transactions('<your-user-id>', { page: 1, limit: 1 })
 
-client.create_non_fungible_token("<contract_id>", {
-  owner_address: "owner_address",
-  owner_secret: "owner_secret",
-  name: "SampleToken",
-})
+client.create_non_fungible_token(
+  '<contract_id>',
+  {
+    owner_address: 'owner_address',
+    owner_secret: 'owner_secret',
+    name: 'SampleToken',
+  },
+)
 
-client.mint_non_fungible_token("contract_id", "token_type", {
-  owner_address: "owner_address",
-  owner_secret: "owner_secret",
-  name: "SampleToken",
-  to_user_id: "yout-user-id"
-})
+client.mint_non_fungible_token(
+  'contract_id',
+  'token_type',
+  {
+    owner_address: 'owner_address',
+    owner_secret: 'owner_secret',
+    name: 'SampleToken',
+    to_user_id: 'yout-user-id',
+  },
+)
 
-client.update_non_fungible_token("contract_id", "token_type", "token_index", {
-  owner_address: "owner_address",
-  owner_secret: "owner_secret",
-  name: "SampleToken2",
-})
+client.update_non_fungible_token(
+  'contract_id',
+  'token_type',
+  'token_index',
+  {
+    owner_address: 'owner_address',
+    owner_secret: 'owner_secret',
+    name: 'SampleToken2',
+  },
+)
 
-client.burn_non_fungible_token("contract_id", "token_type", "token_index", {
-  owner_address: "owner_address",
-  owner_secret: "owner_secret",
-  from_user_id: "yout-user-id"
-})
+client.burn_non_fungible_token(
+  'contract_id',
+  'token_type',
+  'token_index',
+  {
+    owner_address: 'owner_address',
+    owner_secret: 'owner_secret',
+    from_user_id: 'yout-user-id',
+  },
+)
 ```
 
 ## TODO
@@ -67,15 +85,19 @@ client.burn_non_fungible_token("contract_id", "token_type", "token_index", {
 - [x] GET /v1/services/{serviceId}
 - [x] GET /v1/service-tokens/
 - [x] GET /v1/service-tokens/{contractId}
+- [ ] GET /v1/service-tokens/by-txHash/{txHash}
 - [x] PUT /v1/service-tokens/{contractId}
 - [x] POST /v1/service-tokens/{contractId}/mint
 - [x] POST /v1/service-tokens/{contractId}/burn-from
+- [ ] POST /v1/service-tokens
 - [x] GET /v1/service-tokens/{contractId}/holders
 - [x] GET /v1/item-tokens/{contractId}
 - [x] GET /v1/item-tokens/{contractId}/fungibles
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}/holders
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles
+- [ ] POST /v1/item-tokens
+- [ ] GET /v1/item-tokens
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/holders
@@ -148,6 +170,8 @@ client.burn_non_fungible_token("contract_id", "token_type", "token_index", {
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To work prettier, run `npm i -D @prettier/plugin-ruby`.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
