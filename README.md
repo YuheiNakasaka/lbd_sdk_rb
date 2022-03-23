@@ -96,8 +96,8 @@ client.burn_non_fungible_token(
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}/holders
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles
-- [ ] POST /v1/item-tokens
-- [ ] GET /v1/item-tokens
+- [x] POST /v1/item-tokens
+- [x] GET /v1/item-tokens
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/holders

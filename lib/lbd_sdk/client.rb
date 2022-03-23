@@ -420,6 +420,20 @@ module LbdSdk
       )
     end
 
+    def create_item_token_contract(payload)
+      post(
+        '/v1/item-tokens',
+        payload: create_item_token_contract_request(payload),
+      )
+    end
+
+    def created_item_token_contract(query_params = {})
+      get(
+        '/v1/item-tokens',
+        query_params: created_item_token_contract_request(query_params),
+      )
+    end
+
     def item_token(contract_id)
       get("/v1/item-tokens/#{contract_id}")
     end

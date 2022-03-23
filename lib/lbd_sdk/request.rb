@@ -36,6 +36,38 @@ module LbdSdk
       params
     end
 
+    def create_item_token_contract_request(options)
+      if options[:service_wallet_address].nil? ||
+           options[:service_wallet_secret].nil?
+        raise ArgumentError,
+              'service_wallet_address and service_wallet_secret are required'
+      end
+
+      if is_valid_wallet_address(options[:service_wallet_address]) == false
+        raise ArgumentError, 'service_wallet_address is invalid'
+      end
+
+      if is_valid_token_name(options[:name]) == false
+        raise ArgumentError, 'name is invalid'
+      end
+
+      if is_valid_base_uri(options[:base_img_uri]) == false
+        raise ArgumentError, 'base_img_uri is invalid'
+      end
+
+      camelize(options)
+    end
+
+    def created_item_token_contract_request(options)
+      options[:is_only_contract_id] =
+        if options[:is_only_contract_id].nil?
+          false
+        else
+          options[:is_only_contract_id]
+        end
+      camelize(options)
+    end
+
     def issue_service_token_request(options)
       if options[:service_wallet_address].nil? ||
            options[:service_wallet_secret].nil?

@@ -179,4 +179,97 @@ RSpec.describe LbdSdk::Request do
       )
     end
   end
+
+  describe '#create_item_token_contract_request' do
+    before do
+      @payload = {
+        service_wallet_address: 'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        service_wallet_secret: 'secret',
+        name: 'abc',
+        base_img_uri: 'https://example.com/',
+      }
+
+      @camelized_payload = {
+        serviceWalletAddress: 'tlinkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        serviceWalletSecret: 'secret',
+        name: 'abc',
+        baseImgUri: 'https://example.com/',
+      }
+    end
+    it 'returns valid request hash' do
+      expect(instance.create_item_token_contract_request(@payload)).to eq(
+        @camelized_payload,
+      )
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_address] = nil
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_secret] = nil
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'throws argument error' do
+      @payload[:service_wallet_address] = 'invalid'
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'throws argument error' do
+      @payload[:name] = ''
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'throws argument error' do
+      @payload[:name] = 'AAAAAAAAAAAAAAAAAAAAA'
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'throws argument error' do
+      @payload[:base_img_uri] = 'https://example.com/hoge.png'
+      expect {
+        instance.create_item_token_contract_request(@payload)
+      }.to raise_error(ArgumentError)
+    end
+  end
+
+  describe '#created_item_token_contract_request' do
+    before do
+      @payload = { is_only_contract_id: true }
+      @camelized_payload = { isOnlyContractId: false }
+    end
+    it 'returns valid request hash' do
+      expect(instance.created_item_token_contract_request({})).to eq(
+        @camelized_payload,
+      )
+    end
+
+    it 'returns valid request hash' do
+      @camelized_payload[:isOnlyContractId] = true
+      expect(instance.created_item_token_contract_request(@payload)).to eq(
+        @camelized_payload,
+      )
+    end
+
+    it 'returns valid request hash if tx_hash is set' do
+      @payload[:tx_hash] = 'valid_hash'
+      @camelized_payload[:txHash] = 'valid_hash'
+      @camelized_payload[:isOnlyContractId] = true
+      expect(instance.created_item_token_contract_request(@payload)).to eq(
+        @camelized_payload,
+      )
+    end
+  end
 end
