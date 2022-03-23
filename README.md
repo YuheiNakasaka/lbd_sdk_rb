@@ -85,19 +85,19 @@ client.burn_non_fungible_token(
 - [x] GET /v1/services/{serviceId}
 - [x] GET /v1/service-tokens/
 - [x] GET /v1/service-tokens/{contractId}
-- [ ] GET /v1/service-tokens/by-txHash/{txHash}
+- [x] GET /v1/service-tokens/by-txHash/{txHash}
 - [x] PUT /v1/service-tokens/{contractId}
 - [x] POST /v1/service-tokens/{contractId}/mint
 - [x] POST /v1/service-tokens/{contractId}/burn-from
-- [ ] POST /v1/service-tokens
+- [x] POST /v1/service-tokens
 - [x] GET /v1/service-tokens/{contractId}/holders
 - [x] GET /v1/item-tokens/{contractId}
 - [x] GET /v1/item-tokens/{contractId}/fungibles
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/fungibles/{tokenType}/holders
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles
-- [ ] POST /v1/item-tokens
-- [ ] GET /v1/item-tokens
+- [x] POST /v1/item-tokens
+- [x] GET /v1/item-tokens
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}
 - [x] GET /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/holders

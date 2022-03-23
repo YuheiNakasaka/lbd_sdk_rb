@@ -381,6 +381,17 @@ module LbdSdk
       get("/v1/service-tokens/#{contract_id}")
     end
 
+    def issue_service_token(payload)
+      post('/v1/service-tokens', payload: issue_service_token_request(payload))
+    end
+
+    def issued_service_token_by_tx_hash(tx_hash, query_params = {})
+      get(
+        "/v1/service-tokens/by-txHash/#{tx_hash}",
+        query_params: issued_service_token_by_tx_hash_request(query_params),
+      )
+    end
+
     def update_service_token(contract_id, payload = {})
       put(
         "/v1/service-tokens/#{contract_id}",
@@ -406,6 +417,20 @@ module LbdSdk
       get(
         "/v1/service-tokens/#{contract_id}/holders",
         query_params: page_request(query_params),
+      )
+    end
+
+    def create_item_token_contract(payload)
+      post(
+        '/v1/item-tokens',
+        payload: create_item_token_contract_request(payload),
+      )
+    end
+
+    def created_item_token_contract(query_params = {})
+      get(
+        '/v1/item-tokens',
+        query_params: created_item_token_contract_request(query_params),
       )
     end
 
