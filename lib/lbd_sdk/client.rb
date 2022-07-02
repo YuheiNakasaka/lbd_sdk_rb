@@ -634,12 +634,30 @@ module LbdSdk
     end
 
     def fungible_token_media_resources_update_status(contract_id, request_id)
-      get("/v1/item-tokens/#{contract_id}/fungibles/icon/#{request_id}/status")
+      get(
+        "/v1/item-tokens/#{contract_id}/fungibles/media-resources/#{request_id}/status",
+      )
     end
 
     def update_fungible_token_media_resources(contract_id, token_types)
       put(
-        "/v1/item-tokens/#{contract_id}/fungibles/icon",
+        "/v1/item-tokens/#{contract_id}/fungibles/media-resources",
+        payload: fungible_token_media_resources_request(token_types),
+      )
+    end
+
+    def fungible_token_thumbnail_resources_update_statuses(
+      contract_id,
+      request_id
+    )
+      get(
+        "/v1/item-tokens/#{contract_id}/fungibles/thumbnails/#{request_id}/status",
+      )
+    end
+
+    def update_fungible_token_thumbnail_resources(contract_id, token_types)
+      put(
+        "/v1/item-tokens/#{contract_id}/fungibles/thumbnails",
         payload: fungible_token_media_resources_request(token_types),
       )
     end
@@ -649,13 +667,29 @@ module LbdSdk
       request_id
     )
       get(
-        "/v1/item-tokens/#{contract_id}/non-fungibles/icon/#{request_id}/status",
+        "/v1/item-tokens/#{contract_id}/non-fungibles/media-resources/#{request_id}/status",
       )
     end
 
     def update_non_fungible_token_media_resources(contract_id, token_ids)
       put(
-        "/v1/item-tokens/#{contract_id}/non-fungibles/icon",
+        "/v1/item-tokens/#{contract_id}/non-fungibles/media-resources",
+        payload: non_fungible_token_media_resources_request(token_ids),
+      )
+    end
+
+    def non_fungible_token_thumbnail_resources_update_statuses(
+      contract_id,
+      request_id
+    )
+      get(
+        "/v1/item-tokens/#{contract_id}/non-fungibles/thumbnails/#{request_id}/status",
+      )
+    end
+
+    def update_non_fungible_token_thumbnail_resources(contract_id, token_ids)
+      put(
+        "/v1/item-tokens/#{contract_id}/non-fungibles/thumbnails",
         payload: non_fungible_token_media_resources_request(token_ids),
       )
     end
