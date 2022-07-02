@@ -1,3 +1,23 @@
+# 0.1.4(2022-07-02)
+
+## Add new endpoints
+
+- Add `GET /v1/item-tokens/{contractId}/fungibles/thumbnails/{request-id}/status`
+- Add `PUT /v1/item-tokens/{contractId}/fungibles/thumbnails`
+- Add `GET /v1/item-tokens/{contractId}/fungibles/media-resources/{request-id}/status`
+- Add `PUT /v1/item-tokens/{contractId}/fungibles/media-resources`
+- Add `GET /v1/item-tokens/{contractId}/non-fungibles/thumbnails/{request-id}/status`
+- Add `PUT /v1/item-tokens/{contractId}/non-fungibles/thumbnails`
+- Add `GET /v1/item-tokens/{contractId}/non-fungibles/media-resources/{request-id}/status`
+- Add `PUT /v1/item-tokens/{contractId}/non-fungibles/media-resources`
+
+## Delete deprecated endpoints
+
+- Delete `GET /v1/item-tokens/{contractId}/fungibles/icon/{request-id}/status`
+- Delete `PUT /v1/item-tokens/{contractId}/fungibles/icon`
+- Delete `GET /v1/item-tokens/{contractId}/non-fungibles/icon/{request-id}/status`
+- Delete `PUT /v1/item-tokens/{contractId}/non-fungibles/icon`
+
 # 0.1.3(2022-03-23)
 
 - Add `GET /v1/item-tokens`.
