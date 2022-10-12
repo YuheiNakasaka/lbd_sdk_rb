@@ -415,9 +415,8 @@ module LbdSdk
       params
     end
 
-    def non_fungible_token_create_update_request(options)
-      if options[:owner_address].nil? || options[:owner_secret].nil? ||
-           options[:name].nil?
+    def non_fungible_token_create_request(options)
+      if options[:owner_address].nil? || options[:owner_secret].nil?
         raise ArgumentError,
               'owner_address and owner_secret and name are required'
       end
@@ -425,9 +424,25 @@ module LbdSdk
       params = {
         ownerAddress: options[:owner_address],
         ownerSecret: options[:owner_secret],
-        name: options[:name],
       }
 
+      params[:name] = options[:name] if !options[:name].nil?
+      params[:meta] = options[:meta] if !options[:meta].nil?
+      params
+    end
+
+    def non_fungible_token_update_request(options)
+      if options[:owner_address].nil? || options[:owner_secret].nil?
+        raise ArgumentError,
+              'owner_address and owner_secret and name are required'
+      end
+
+      params = {
+        ownerAddress: options[:owner_address],
+        ownerSecret: options[:owner_secret],
+      }
+
+      params[:name] = options[:name] if !options[:name].nil?
       params[:meta] = options[:meta] if !options[:meta].nil?
       params
     end

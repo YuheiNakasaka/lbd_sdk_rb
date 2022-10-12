@@ -501,7 +501,7 @@ module LbdSdk
     def create_non_fungible_token(contract_id, payload = {})
       post(
         "/v1/item-tokens/#{contract_id}/non-fungibles",
-        payload: non_fungible_token_create_update_request(payload),
+        payload: non_fungible_token_create_request(payload),
       )
     end
 
@@ -552,7 +552,7 @@ module LbdSdk
     def update_non_fungible_token_type(contract_id, token_type, payload = {})
       put(
         "/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}",
-        payload: non_fungible_token_create_update_request(payload),
+        payload: non_fungible_token_update_request(payload),
       )
     end
 
@@ -564,7 +564,7 @@ module LbdSdk
     )
       put(
         "/v1/item-tokens/#{contract_id}/non-fungibles/#{token_type}/#{token_index}",
-        payload: non_fungible_token_create_update_request(payload),
+        payload: non_fungible_token_update_request(payload),
       )
     end
 
