@@ -1,3 +1,21 @@
+# 0.1.6(2023-01-11)
+
+## Add new endpoints
+
+- Add `GET /v2/users/{userId}/transactions`
+- Add `GET /v2/wallets/{walletAddress}/transactions`
+- Add `GET /v2/transactions/{txHash}`
+
+## Deprecate endpoints
+
+- Add warning to `GET /v1/users/{userId}/transactions`
+- Add warning to `GET /v1/wallets/{walletAddress}/transactions`
+- Add warning to `GET /v1/transactions/{txHash}`
+
+# 0.1.5(2022-10-12)
+
+- Fix invalid validation to some parametars.
+
 # 0.1.4(2022-07-02)
 
 ## Add new endpoints
