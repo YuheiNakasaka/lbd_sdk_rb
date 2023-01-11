@@ -33,8 +33,16 @@ module LbdSdk
     end
 
     def user_transactions(user_id, query_params = {})
+      warn('[Deprecated] GET /v1/users/{userId}/transactions')
       get(
         "/v1/users/#{user_id}/transactions",
+        query_params: transaction_page_request(query_params),
+      )
+    end
+
+    def user_transactions_v2(user_id, query_params = {})
+      get(
+        "/v2/users/#{user_id}/transactions",
         query_params: transaction_page_request(query_params),
       )
     end
@@ -239,8 +247,16 @@ module LbdSdk
     end
 
     def wallet_transactions(wallet_address, query_params = {})
+      warn('[Deprecated] GET /v1/wallets/{walletAddress}/transactions')
       get(
         "/v1/wallets/#{wallet_address}/transactions",
+        query_params: transaction_page_request(query_params),
+      )
+    end
+
+    def wallet_transactions_v2(wallet_address, query_params = {})
+      get(
+        "/v2/wallets/#{wallet_address}/transactions",
         query_params: transaction_page_request(query_params),
       )
     end
@@ -703,7 +719,12 @@ module LbdSdk
     end
 
     def transaction_result(tx_hash)
+      warn('[Deprecated] GET /v1/transactions/{txHash}')
       get("/v1/transactions/#{tx_hash}")
+    end
+
+    def transaction_result_v2(tx_hash)
+      get("/v2/transactions/#{tx_hash}")
     end
 
     def httpclient

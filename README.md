@@ -128,6 +128,7 @@ client.burn_non_fungible_token(
 - [x] POST /v1/item-tokens/{contractId}/non-fungibles/{tokenType}/{tokenIndex}/burn
 - [x] GET /v1/users/{userId}
 - [x] GET /v1/users/{userId}/transactions
+- [x] GET /v2/users/{userId}/transactions
 - [x] GET /v1/users/{userId}/base-coin
 - [x] GET /v1/users/{userId}/service-tokens
 - [x] GET /v1/users/{userId}/service-tokens/{contractId}
@@ -152,6 +153,7 @@ client.burn_non_fungible_token(
 - [x] GET /v1/wallets
 - [x] GET /v1/wallets/{walletAddress}
 - [x] GET /v1/wallets/{walletAddress}/transactions
+- [x] GET /v2/wallets/{walletAddress}/transactions
 - [x] GET /v1/wallets/{walletAddress}/base-coin
 - [x] GET /v1/wallets/{walletAddress}/service-tokens
 - [x] GET /v1/wallets/{walletAddress}/service-tokens/{contractId}
@@ -169,6 +171,7 @@ client.burn_non_fungible_token(
 - [x] GET /v1/memos/{txHash}
 - [x] GET /v1/time
 - [x] GET /v1/transactions/{txHash}
+- [x] GET /v2/transactions/{txHash}
 - [ ] API payloads test. All payloads at least should be checked if the inputs are required or optional.
 
 ## Development

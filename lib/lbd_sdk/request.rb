@@ -28,11 +28,12 @@ module LbdSdk
       params = {
         limit: options[:limit] || 10,
         page: options[:page] || 1,
-        orderBy: options[:order_by] || 'desc',
+        orderBy: options[:order_by] || options[:orderBy] || 'desc',
       }
       params[:before] = options[:before] if !options[:before].nil?
       params[:after] = options[:after] if !options[:after].nil?
       params[:msgType] = options[:msgType] if !options[:msgType].nil?
+      params[:msgType] = options[:msg_type] if !options[:msg_type].nil?
       params
     end
 
