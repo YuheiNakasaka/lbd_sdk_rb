@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lbd_sdk (0.1.6)
+    lbd_sdk (0.1.7)
 
 GEM
   remote: https://rubygems.org/

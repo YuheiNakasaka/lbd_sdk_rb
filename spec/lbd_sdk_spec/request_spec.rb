@@ -59,7 +59,7 @@ RSpec.describe LbdSdk::Request do
             order_by: 'asc',
             before: timestamp,
             after: timestamp,
-            msgType: 'coin/MsgSend',
+            msg_type: 'coin/MsgSend',
           },
         ),
       ).to eq(

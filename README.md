@@ -172,7 +172,6 @@ client.burn_non_fungible_token(
 - [x] GET /v1/time
 - [x] GET /v1/transactions/{txHash}
 - [x] GET /v2/transactions/{txHash}
-- [ ] API payloads test. All payloads at least should be checked if the inputs are required or optional.
 
 ## Development
 
