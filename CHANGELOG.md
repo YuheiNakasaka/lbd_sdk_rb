@@ -1,3 +1,9 @@
+# 0.1.7(2023-01-14)
+
+## Fix request options
+
+- Modity `msgType` option in `transaction_page_request` to `msg_type` to unify all options format.
+
 # 0.1.6(2023-01-11)
 
 ## Add new endpoints

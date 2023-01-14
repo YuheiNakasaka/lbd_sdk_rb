@@ -2,7 +2,7 @@ inherit_gem:
   prettier: rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   DisabledByDefault: true
   Exclude:
     - "gems/**/*"
